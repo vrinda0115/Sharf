@@ -1,79 +1,121 @@
-SHARF data implementation package
 
-Purpose
-This package implements the data plan and first application prototype for the SHARF decision-support tool: a founder-facing startup health and risk tool for monthly burn, fundraising readiness, and operational remediation decisions.
+# macOS/Linux
+source venv/bin/activate
+```
 
-Files
-- report.docx: completed assignment report.
-- streamlit_app.py: main Streamlit frontend with six pages: founder input, health score and risk explanation, decision options, action plan/outcome log, predictive model performance, and what-if runway analysis.
-- UI/prototype/index.html: first static application prototype with portfolio, startup cockpit, and monthly log screens.
-- UI/prototype/app.js and UI/prototype/styles.css: prototype interaction and visual layer.
-- UI/prototype/data/app_data.js: browser-ready data bundle generated from validated final CSV/JSON outputs.
-- videos/sharf_prototype_demo.mp4: approximately two-minute video demonstration of the application prototype.
-- code/generate_sharf_dataset.py: creates synthetic startup profiles, monthly snapshots, derived metrics, scores, recommendations, and the data dictionary.
-- code/process_company_benchmarks.py: processes the user-provided company employment/payroll CSV.GZ into a cleaned benchmark and summary.
-- code/monte_carlo_risk_forecast.py: runs 1,000 6-month Monte Carlo simulations per startup to estimate probabilistic risk under uncertainty.
-- code/train_runway_prediction_model.py: trains a transparent ridge-regression model to predict runway three months ahead, evaluates it on a temporal holdout, and saves model uncertainty inputs for what-if analysis.
-- code/validate_sharf_dataset.py: validates schemas, identifiers, ranges, formulas, missingness, referential integrity, metric computability, Monte Carlo forecast outputs, and predictive model outputs.
-- code/run_pipeline.py: runs generation and validation in order.
-- scripts/prepare_app_data.py: converts validated final data into UI/prototype/data/app_data.js.
-- scripts/create_demo_video.py: generates the video demonstration from validated app data.
-- data/raw/company_employment_payroll_raw.csv.gz: user-provided sourced company employment/payroll benchmark.
-- data/raw/startup_profiles_raw.csv: raw synthetic startup profile records.
-- data/raw/monthly_snapshots_raw.csv: raw generated monthly startup observations.
-- data/intermediate/monthly_snapshots_scored.csv: intermediate scored monthly records.
-- data/intermediate/monte_carlo_simulation_paths.csv: intermediate endpoint records for each simulated forecast path.
-- data/final/startup_profiles.csv: final startup profile table.
-- data/final/sharf_monthly_metrics.csv: final startup-month decision-support dataset.
-- data/final/monte_carlo_risk_forecast.csv: final 6-month probabilistic risk forecast summary.
-- data/final/runway_model_holdout_predictions.csv: temporal holdout predictions, actual future runway values, and 90% predictive intervals for the three-month runway model.
-- data/final/runway_prediction_model.json: saved model artifact, feature scaling values, performance metrics, and residual uncertainty parameters used by the Streamlit what-if screen.
-- data/final/company_employment_payroll_benchmark.csv: processed sourced annual benchmark with employment/payroll growth fields.
-- data/final/company_benchmark_summary.csv: benchmark summary statistics used for Monte Carlo calibration.
-- data/final/data_dictionary.csv: field definitions.
-- data/final/research_evidence_map.csv: field-by-field map connecting SHARF variables to research/public evidence.
-- data/final/validation_summary.csv: validation checks and outcomes.
-- data/final/validation_results.json: machine-readable validation results.
-- predictive_model_decision_report.docx: one-page decision memo justifying the predictive model and explaining how performance and uncertainty support founder decisions.
-- docs/empirical_basis_and_assumptions.md: supporting source and assumption notes.
-- docs/research_backing_for_data.md: plain-language research backing for dataset choices and assumptions.
+Install Python packages:
 
-Reproduce the pipeline
-1. Open a terminal in the project root.
-2. Run:
-   python code/run_pipeline.py
-3. Refresh the prototype data:
-   python scripts/prepare_app_data.py
-4. Rebuild the demo video, if needed:
-   python scripts/create_demo_video.py
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
 
-Run the prototype
-Open UI/prototype/index.html in a browser. The prototype is static and does not require a server.
+### Run the Product Prototype
 
-Run the Streamlit prototype
-If Streamlit is installed, run:
-   streamlit run streamlit_app.py
+Start the main Streamlit cockpit:
 
-The Streamlit version has six pages:
-- Founder Input, where the user enters or edits monthly values before scoring.
-- Health Score and Risk, where SHARF displays the 0-100 health score, risk tier, dimension scores, and plain-language explanation.
-- Decision Options, where the founder compares conserve cash, maintain plan, and prepare fundraise.
-- Action Plan and Outcome Log, where the founder records the operating decision, owner, target, due date, status, outcome notes, and whether the score improved.
-- Predictive Model Performance, where the founder reviews temporal holdout MAE, RMSE, R^2, prediction-interval coverage, and actual-versus-predicted runway values.
-- What-If Runway Analysis, where the founder edits predictor variables and receives a three-month runway prediction with a 90% predictive interval.
-- Login and memory, where each prototype user can create a local account and keep saved scoring runs and action-plan entries on this computer.
+```bash
+streamlit run streamlit_app.py
+```
 
-Required software
-- Python 3.10 or later.
-- pandas and numpy.
-- python-docx for rebuilding report.docx.
-- Pillow and ffmpeg for rebuilding the demonstration video.
+Use the local login screen to create a prototype account. Saved score runs and action-plan entries are stored in:
 
-Notes
-- The pipeline uses fixed random seeds, so rerunning it recreates the same final synthetic startup datasets and Monte Carlo forecast outputs.
-- No real startup, founder, customer, employee, investor, or transaction data is included. The startup operating records are synthetic and intended for decision-support prototype testing.
-- The company employment/payroll benchmark is a sourced annual benchmark file used only to calibrate employment/payroll volatility in the Monte Carlo layer. It is not treated as startup operating data.
-- Monte Carlo is used because future startup risk is uncertain. The forecast file should be read as prototype decision-support probabilities, not as real investment predictions.
-- The static application prototype now has three screens: a portfolio overview, a startup cockpit, and a monthly log page. It is intended to demonstrate core decision-support functionality, not a production system.
-- The Streamlit prototype is now the main frontend and follows the four provided wireframes using the blue palette #092C56, #225688, #668CA9, #A9CBE0, and #F0F5F4.
-- Login memory is saved locally in data/app_memory.json after a user creates an account. Passwords are stored as salted hashes for the prototype, not as plain text. This is appropriate for a class demo but not production authentication.
+```text
+data/app_memory.json
+```
+
+That file is local runtime state and should not be committed.
+
+### Run the Static Demo
+
+Open this file in a browser:
+
+```text
+UI/prototype/index.html
+```
+
+The static prototype uses:
+
+```text
+UI/prototype/data/app_data.js
+```
+
+Refresh that file after rebuilding datasets:
+
+```bash
+python scripts/prepare_app_data.py
+```
+
+### Rebuild Analytics Outputs
+
+Run the full pipeline:
+
+```bash
+python code/run_pipeline.py
+```
+
+Check validation before sharing a demo:
+
+```bash
+python code/validate_sharf_dataset.py
+```
+
+### Optional Demo Video
+
+After refreshing the static prototype data, rebuild the demo video:
+
+```bash
+python scripts/create_demo_video.py
+```
+
+This requires `ffmpeg`. The script writes frames and the final MP4 under `videos/`.
+
+## GitHub Publishing Checklist
+
+Before pushing to GitHub:
+
+1. Confirm the app runs with `streamlit run streamlit_app.py`.
+2. Run `python code/run_pipeline.py`.
+3. Run `python scripts/prepare_app_data.py`.
+4. Confirm validation results in `data/final/validation_summary.csv`.
+5. Remove local runtime state such as `data/app_memory.json`.
+6. Do not commit virtual environments, cache folders, local secrets, or generated logs.
+7. Commit `README.md`, `requirements.txt`, source code, docs, and intentionally shared sample data.
+
+Recommended repository topics:
+
+```text
+startup-analytics
+streamlit
+monte-carlo
+decision-support
+founder-tools
+```
+
+## Troubleshooting
+
+If `streamlit` is not recognized, make sure the virtual environment is active and rerun:
+
+```bash
+pip install -r requirements.txt
+```
+
+If the app cannot find CSV files, run from the repository root and confirm `data/final/` exists.
+
+If video generation fails, install `ffmpeg` and verify:
+
+```bash
+ffmpeg -version
+```
+
+If Git reports a dubious ownership warning on Windows, fix it only for this repository:
+
+```bash
+git config --global --add safe.directory C:/Users/vrind/sps_corps_analytics
+```
+
+## Documentation
+
+- [Product Setup](PRODUCT_SETUP.md): local setup, GitHub publishing checklist, operation, and troubleshooting.
+- [Research backing](docs/research_backing_for_data.md): plain-language explanation of dataset choices.
+- [Empirical basis and assumptions](docs/empirical_basis_and_assumptions.md): assumptions and supporting notes.
