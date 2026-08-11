@@ -1,0 +1,19 @@
+startup_id,startup_name,industry,stage,region,founding_year,board_or_advisory_group
+ST001,SHARF Sample Venture 01,Edtech,Series A,US Northeast,2022,True
+ST002,SHARF Sample Venture 02,Climate,Series A,US South,2023,True
+ST003,SHARF Sample Venture 03,Edtech,Seed,US Northeast,2020,False
+ST004,SHARF Sample Venture 04,Climate,Seed,US Northeast,2021,False
+ST005,SHARF Sample Venture 05,Fintech,Series A,US South,2020,True
+ST006,SHARF Sample Venture 06,Marketplace,Series A,US South,2023,True
+ST007,SHARF Sample Venture 07,Edtech,Pre-seed,US Midwest,2023,False
+ST008,SHARF Sample Venture 08,Marketplace,Seed,US West,2021,True
+ST009,SHARF Sample Venture 09,Marketplace,Pre-seed,US Northeast,2021,False
+ST010,SHARF Sample Venture 10,Fintech,Series A,US South,2023,True
+ST011,SHARF Sample Venture 11,Climate,Series A,US Northeast,2024,True
+ST012,SHARF Sample Venture 12,Fintech,Pre-seed,US West,2020,False
+ST013,SHARF Sample Venture 13,Fintech,Seed,US West,2022,False
+ST014,SHARF Sample Venture 14,Healthtech,Pre-seed,US Northeast,2023,False
+ST015,SHARF Sample Venture 15,Edtech,Series A,US South,2022,True
+ST016,SHARF Sample Venture 16,Edtech,Pre-seed,US Northeast,2022,True
+ST017,SHARF Sample Venture 17,SaaS,Series A,US Midwest,2024,True
+ST018,SHARF Sample Venture 18,SaaS,Seed,US Midwest,2022,False

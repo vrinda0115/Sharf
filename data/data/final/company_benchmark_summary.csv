@@ -1,0 +1,2 @@
+benchmark_name,source_file,row_count,company_count,year_min,year_max,employment_growth_p10,employment_growth_p50,employment_growth_p90,payroll_growth_p10,payroll_growth_p50,payroll_growth_p90,payroll_per_employee_p50
+company_employment_payroll,data\raw\company_employment_payroll_raw.csv.gz,67790,5392,2010,2025,-0.1276,0.0152,0.3592,-0.1892,0.0626,0.7794,58295.01

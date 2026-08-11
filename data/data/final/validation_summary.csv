@@ -1,0 +1,18 @@
+check,passed,details
+profile_schema,True,8 columns present
+metric_schema,True,33 columns present
+monte_carlo_forecast_schema,True,13 columns present
+company_benchmark_schema,True,9 columns present
+profile_identifier_uniqueness,True,18 unique startup IDs
+metric_grain_uniqueness,True,One row per startup-month
+referential_integrity,True,Missing profile keys: []
+forecast_referential_integrity,True,Missing forecast profile keys: []
+missingness,True,0 missing cells across final tables
+range_checks,True,Out-of-range columns: none
+monte_carlo_output_checks,True,"Probabilities, scores, quantiles, and simulation counts are valid"
+runway_formula,True,Maximum formula difference: 0.0050
+decision_outputs_present,True,All rows have risk and recommendation outputs
+planned_metrics_computable,True,All scoring inputs and final SHARF score are numeric
+time_coverage,True,18 startups have 12 monthly observations
+forecast_coverage,True,18 forecast rows for 18 profiles
+company_benchmark_quality,True,67790 company-year rows across 5392 companies

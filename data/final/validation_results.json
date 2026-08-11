@@ -1,0 +1,97 @@
+[
+  {
+    "check": "profile_schema",
+    "passed": true,
+    "details": "8 columns present"
+  },
+  {
+    "check": "metric_schema",
+    "passed": true,
+    "details": "33 columns present"
+  },
+  {
+    "check": "monte_carlo_forecast_schema",
+    "passed": true,
+    "details": "13 columns present"
+  },
+  {
+    "check": "company_benchmark_schema",
+    "passed": true,
+    "details": "9 columns present"
+  },
+  {
+    "check": "predictive_model_holdout_schema",
+    "passed": true,
+    "details": "8 columns present"
+  },
+  {
+    "check": "profile_identifier_uniqueness",
+    "passed": true,
+    "details": "18 unique startup IDs"
+  },
+  {
+    "check": "metric_grain_uniqueness",
+    "passed": true,
+    "details": "One row per startup-month"
+  },
+  {
+    "check": "referential_integrity",
+    "passed": true,
+    "details": "Missing profile keys: []"
+  },
+  {
+    "check": "forecast_referential_integrity",
+    "passed": true,
+    "details": "Missing forecast profile keys: []"
+  },
+  {
+    "check": "missingness",
+    "passed": true,
+    "details": "0 missing cells across final tables"
+  },
+  {
+    "check": "range_checks",
+    "passed": true,
+    "details": "Out-of-range columns: none"
+  },
+  {
+    "check": "monte_carlo_output_checks",
+    "passed": true,
+    "details": "Probabilities, scores, quantiles, and simulation counts are valid"
+  },
+  {
+    "check": "predictive_model_outputs",
+    "passed": true,
+    "details": "Temporal holdout, finite performance metrics, and ordered 90% prediction intervals are valid"
+  },
+  {
+    "check": "runway_formula",
+    "passed": true,
+    "details": "Maximum formula difference: 0.0050"
+  },
+  {
+    "check": "decision_outputs_present",
+    "passed": true,
+    "details": "All rows have risk and recommendation outputs"
+  },
+  {
+    "check": "planned_metrics_computable",
+    "passed": true,
+    "details": "All scoring inputs and final SHARF score are numeric"
+  },
+  {
+    "check": "time_coverage",
+    "passed": true,
+    "details": "18 startups have 12 monthly observations"
+  },
+  {
+    "check": "forecast_coverage",
+    "passed": true,
+    "details": "18 forecast rows for 18 profiles"
+  },
+  {
+    "check": "company_benchmark_quality",
+    "passed": true,
+    "details": "67790 company-year rows across 5392 companies"
+  }
+]

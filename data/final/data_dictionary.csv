@@ -1,0 +1,34 @@
+field_name,definition,field_type
+startup_id,Unique synthetic startup identifier,key
+month,Monthly snapshot date at month start,key/date
+monthly_revenue_usd,Monthly recognized revenue in USD,generated
+cash_balance_usd,Cash available at month end in USD,generated
+monthly_burn_usd,Operating cash burn in USD,generated
+monthly_churn_rate,Monthly customer churn rate,generated
+customer_acquisition_cost_usd,Estimated customer acquisition cost in USD,generated
+sales_marketing_spend_usd,Monthly sales and marketing spend in USD,generated
+new_arr_usd,Estimated new annual recurring revenue added,generated
+gross_margin,Gross margin share used in payback estimation,generated
+cac_payback_months,Estimated CAC payback period,derived/generated
+nps,Net Promoter Score proxy,generated
+headcount,Employee headcount,generated
+avg_time_to_fill_days,Average hiring time-to-fill,generated
+macro_stress_index,Synthetic 0-1 external stress proxy,generated
+runway_months,Cash balance divided by monthly burn,derived
+mom_revenue_growth,Month-over-month revenue growth,derived
+revenue_score,Normalized 0-100 revenue trajectory score,derived
+runway_score,Normalized 0-100 runway score,derived
+retention_score,Normalized 0-100 churn/retention score,derived
+growth_efficiency_score,Normalized 0-100 CAC payback score,derived
+customer_sentiment_score,Normalized 0-100 NPS score,derived
+team_capacity_score,Normalized 0-100 hiring capacity score,derived
+board_or_advisory_group,Governance structure flag,generated/manual
+stage,Startup stage,profile attribute
+industry,Startup industry category,profile attribute
+region,Startup region category,profile attribute
+governance_score,Normalized score from governance flag,derived
+sharf_score,Weighted 0-100 composite health score,derived
+risk_tier,"Critical, Watch, or Stable tier",derived
+burn_recommendation,Burn-rate decision recommendation,derived
+fundraising_readiness,Investor outreach timing recommendation,derived
+remediation_priority,Lowest-scoring operating dimension,derived
